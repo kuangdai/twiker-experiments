@@ -243,55 +243,55 @@ class DataTrainingArguments:
 
 
 @dataclass
-class TwikeArguments:
+class TwikerArguments:
     """
-    Arguments for TWIKE.
+    Arguments for TWIKER.
     """
-    twike_activated: bool = field(
+    twiker_activated: bool = field(
         default=False,
         metadata={
             "help": (
-                "Whether to activate TWIKE."
+                "Whether to activate TWIKER."
             )
         },
     )
-    twike_kernel_size: int = field(
+    twiker_kernel_size: int = field(
         default=3,
         metadata={
             "help": (
-                "Kernel size of TWIKE."
+                "Kernel size of TWIKER."
             )
         },
     )
-    twike_probability: bool = field(
+    twiker_sum_to_one: bool = field(
         default=True,
         metadata={
             "help": (
-                "Whether to make TWIKE probability-like."
+                "Whether to make TWIKER sum to one."
             )
         },
     )
-    twike_head_invariant: bool = field(
+    twiker_head_invariant: bool = field(
         default=False,
         metadata={
             "help": (
-                "Whether TWIKE is head invariant."
+                "Whether TWIKER is head-invariant."
             )
         },
     )
-    twike_layer_invariant: bool = field(
+    twiker_layer_invariant: bool = field(
         default=False,
         metadata={
             "help": (
-                "Whether TWIKE is layer invariant."
+                "Whether TWIKER is layer-invariant."
             )
         },
     )
-    twike_only: bool = field(
+    twiker_strict_on_casual: bool = field(
         default=False,
         metadata={
             "help": (
-                "Whether to use TWIKE for PEFT."
+                "Whether TWIKER is strict on casual."
             )
         },
     )
@@ -303,13 +303,13 @@ def main():
     # We now keep distinct sets of args, for a cleaner separation of concerns.
 
     parser = HfArgumentParser((ModelArguments, DataTrainingArguments, TrainingArguments,
-                               TwikeArguments))
+                               TwikerArguments))
     if len(sys.argv) == 2 and sys.argv[1].endswith(".json"):
         # If we pass only one argument to the script and it's the path to a json file,
         # let's parse it to get our arguments.
-        model_args, data_args, training_args, twike_args = parser.parse_json_file(json_file=os.path.abspath(sys.argv[1]))
+        model_args, data_args, training_args, twiker_args = parser.parse_json_file(json_file=os.path.abspath(sys.argv[1]))
     else:
-        model_args, data_args, training_args, twike_args = parser.parse_args_into_dataclasses()
+        model_args, data_args, training_args, twiker_args = parser.parse_args_into_dataclasses()
 
     if model_args.use_auth_token is not None:
         warnings.warn(
@@ -458,12 +458,13 @@ def main():
         "token": model_args.token,
         "trust_remote_code": model_args.trust_remote_code,
 
-        # set up TWIKE
-        "twike_activated": twike_args.twike_activated,
-        "twike_kernel_size": twike_args.twike_kernel_size,
-        "twike_probability": twike_args.twike_probability,
-        "twike_head_invariant": twike_args.twike_head_invariant,
-        "twike_layer_invariant": twike_args.twike_layer_invariant,
+        # set up TWIKER
+        "twiker_activated": twiker_args.twiker_activated,
+        "twiker_kernel_size": twiker_args.twiker_kernel_size,
+        "twiker_sum_to_one": twiker_args.twiker_sum_to_one,
+        "twiker_head_invariant": twiker_args.twiker_head_invariant,
+        "twiker_layer_invariant": twiker_args.twiker_layer_invariant,
+        "twiker_strict_on_casual": twiker_args.twiker_strict_on_casual
     }
     if model_args.config_name:
         config = AutoConfig.from_pretrained(model_args.config_name, **config_kwargs)
@@ -515,10 +516,6 @@ def main():
         model = AutoModelForCausalLM.from_config(config, trust_remote_code=model_args.trust_remote_code)
         n_params = sum({p.data_ptr(): p.numel() for p in model.parameters()}.values())
         logger.info(f"Training new model from scratch - Total size={n_params/2**20:.2f}M params")
-
-    # freeze base, use TWIKE and PEFT
-    if twike_args.twike_activated and twike_args.twike_only:
-        model.transformer.freeze_base()
 
     # We resize the embeddings only when necessary to avoid index errors. If you are creating a model from scratch
     # on a small vocab and want a smaller embedding size, remove this test.
