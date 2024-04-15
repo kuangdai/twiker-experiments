@@ -16,6 +16,6 @@ if __name__ == "__main__":
                     out = out.replace('@L', l)
                     with open(f'train_twiker_{k}_{s}_{h}_{l}.json', 'w') as f:
                         f.write(out)
-                    script += f"python run_clm.py config/gpt2/wikitext/hyper/train_twiker_{k}_{s}_{h}_{l}.json\n"
+                    script += f"python run_clm.py hyper/train_twiker_{k}_{s}_{h}_{l}.json\n"
     with open('run_all.sh', 'w') as f:
         f.write(script)
