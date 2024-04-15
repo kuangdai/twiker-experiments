@@ -1,0 +1,30 @@
+{
+    "model_name_or_path": "openai-community/gpt2",
+    "dataset_name": "wikitext",
+    "dataset_config_name": "wikitext-2-raw-v1",
+
+
+    "output_dir": "auto",
+    "overwrite_output_dir": true,
+    "report_to": "wandb",
+    "save_strategy": "no",
+    "logging_steps": 50,
+
+
+    "do_eval": true,
+    "per_device_eval_batch_size": 8,
+
+
+    "do_train": true,
+    "per_device_train_batch_size": 8,
+    "num_train_epochs": 20.0,
+    "learning_rate": 5e-5,
+
+
+    "twiker_activated": true,
+    "twiker_kernel_size": 5,
+    "twiker_sum_to_one": false,
+    "twiker_head_invariant": true,
+    "twiker_layer_invariant": false,
+    "twiker_strict_on_casual": true
+}
