@@ -322,7 +322,7 @@ def main():
     # output dir in same structure of config
     if training_args.output_dir == 'auto':
         training_args.output_dir = str(os.path.abspath(sys.argv[1])).replace(
-            'config/', 'results/').replace('.json', '')
+            'configs/', 'results/').replace('.json', '')
 
     if model_args.use_auth_token is not None:
         warnings.warn(
