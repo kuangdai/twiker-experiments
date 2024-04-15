@@ -17,5 +17,5 @@ if __name__ == "__main__":
                     with open(f'train_twiker_{k}_{s}_{h}_{l}.json', 'w') as f:
                         f.write(out)
                     script += f"python main.py hyper/train_twiker_{k}_{s}_{h}_{l}.json\n"
-    with open('../run_all.sh', 'w') as f:
+    with open('../run_all_hyper.sh', 'w') as f:
         f.write(script)
