@@ -311,6 +311,11 @@ def main():
     else:
         model_args, data_args, training_args, twiker_args = parser.parse_args_into_dataclasses()
 
+    # output dir in same structure of config
+    if training_args.output_dir == 'auto':
+        training_args.output_dir = str(os.path.abspath(sys.argv[1])).replace(
+            'config/', 'results/').replace('.json', '')
+
     if model_args.use_auth_token is not None:
         warnings.warn(
             "The `use_auth_token` argument is deprecated and will be removed in v4.34. Please use `token` instead.",

@@ -4,10 +4,10 @@
     "dataset_config_name": "wikitext-2-raw-v1",
 
 
-    "output_dir": "results/gpt2/wikitext/eval_base",
+    "output_dir": "auto",
     "overwrite_output_dir": true,
     "report_to": "no",
-    "save_strategy": "none",
+    "save_strategy": "wandb",
     "logging_steps": 50,
 
 
@@ -18,7 +18,7 @@
 
     "do_train": false,
     "per_device_train_batch_size": 8,
-    "num_train_epochs": 50.0,
+    "num_train_epochs": 20.0,
     "learning_rate": 5e-5,
 
 
