@@ -3,21 +3,29 @@
     "dataset_name": "wikitext",
     "dataset_config_name": "wikitext-2-raw-v1",
 
-    "per_device_train_batch_size": 8,
-    "per_device_eval_batch_size": 8,
-    "num_train_epochs": 10.0,
-    "learning_rate": 5e-5,
-    "report_to": "none",
-    "save_strategy": "no",
+
+    "output_dir": "results/gpt2/wikitext/eval_base",
     "overwrite_output_dir": true,
+    "report_to": "no",
+    "save_strategy": "none",
+    "logging_steps": 50,
+
+
     "do_eval": true,
+    "per_device_eval_batch_size": 8,
+    "use_cache": false,
+
 
     "do_train": false,
+    "per_device_train_batch_size": 8,
+    "num_train_epochs": 50.0,
+    "learning_rate": 5e-5,
+
+
     "twiker_activated": true,
     "twiker_kernel_size": 3,
     "twiker_sum_to_one": false,
     "twiker_head_invariant": true,
     "twiker_layer_invariant": true,
-    "twiker_strict_on_casual": true,
-    "output_dir": "results/gpt2/wikitext/eval_twiker"
+    "twiker_strict_on_casual": true
 }
