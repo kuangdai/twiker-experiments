@@ -6,8 +6,8 @@
 
     "output_dir": "auto",
     "overwrite_output_dir": true,
-    "report_to": "no",
-    "save_strategy": "wandb",
+    "report_to": "wandb",
+    "save_strategy": "no",
     "logging_steps": 50,
 
 
