@@ -1,5 +1,5 @@
 if __name__ == "__main__":
-    K = [3, 5, 7]
+    K = [7, 5, 3]
     S = ["true", "false"]
     H = ["true", "false"]
     L = ["true", "false"]
