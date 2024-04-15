@@ -470,6 +470,7 @@ def main():
         "revision": model_args.model_revision,
         "token": model_args.token,
         "trust_remote_code": model_args.trust_remote_code,
+        "use_cache": model_args.use_cache,
 
         # set up TWIKER
         "twiker_activated": twiker_args.twiker_activated,
