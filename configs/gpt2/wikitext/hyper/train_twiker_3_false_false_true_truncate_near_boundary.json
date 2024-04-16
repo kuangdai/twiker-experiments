@@ -26,5 +26,5 @@
     "twiker_sum_to_one": false,
     "twiker_head_invariant": false,
     "twiker_layer_invariant": true,
-    "twiker_casual_handling": truncate_near_boundary
+    "twiker_casual_handling": "truncate_near_boundary"
 }
