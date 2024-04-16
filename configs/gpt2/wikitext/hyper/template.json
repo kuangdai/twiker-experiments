@@ -26,5 +26,5 @@
     "twiker_sum_to_one": @S,
     "twiker_head_invariant": @H,
     "twiker_layer_invariant": @L,
-    "twiker_strict_on_casual": true
+    "twiker_casual_handling": @C
 }

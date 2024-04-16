@@ -15,7 +15,7 @@
     "per_device_eval_batch_size": 6,
 
 
-    "do_train": false,
+    "do_train": true,
     "per_device_train_batch_size": 6,
     "num_train_epochs": 20.0,
     "learning_rate": 5e-5,
@@ -23,8 +23,8 @@
 
     "twiker_activated": true,
     "twiker_kernel_size": 3,
-    "twiker_sum_to_one": false,
+    "twiker_sum_to_one": true,
     "twiker_head_invariant": true,
     "twiker_layer_invariant": true,
-    "twiker_casual_handling": "none"
+    "twiker_casual_handling": shrink_near_boundary
 }
