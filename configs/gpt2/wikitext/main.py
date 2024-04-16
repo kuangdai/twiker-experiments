@@ -295,11 +295,11 @@ class TwikerArguments:
             )
         },
     )
-    twiker_strict_on_casual: bool = field(
+    twiker_casual_handling: bool = field(
         default=False,
         metadata={
             "help": (
-                "Whether TWIKER is strict on casual."
+                "How TWIKER handles casual masking."
             )
         },
     )
@@ -478,7 +478,7 @@ def main():
         "twiker_sum_to_one": twiker_args.twiker_sum_to_one,
         "twiker_head_invariant": twiker_args.twiker_head_invariant,
         "twiker_layer_invariant": twiker_args.twiker_layer_invariant,
-        "twiker_strict_on_casual": twiker_args.twiker_strict_on_casual
+        "twiker_casual_handling": twiker_args.twiker_casual_handling
     }
     if model_args.config_name:
         config = AutoConfig.from_pretrained(model_args.config_name, **config_kwargs)
