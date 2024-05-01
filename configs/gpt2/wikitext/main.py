@@ -648,6 +648,7 @@ def main():
                 batched=True,
             )
 
+    train_dataset = None
     if training_args.do_train:
         if "train" not in tokenized_datasets:
             raise ValueError("--do_train requires a train dataset")
@@ -684,20 +685,29 @@ def main():
     # Initialize our Trainer
     optimizers_tuple = (None, None)
     if twiker_args.twiker_activated and twiker_args.twiker_lr is not None:
-        # different lr for twiker and base
-        optimizer_grouped_parameters = [
+        # handle different lr for twiker and base
+        grouped_parameters = [
+            # base
             {
-                "params": [p for n, p in model.named_parameters() if not "TwikerEmbedding" in n],
-                "learning_rate": training_args.learning_rate,
+                "params": [p for n, p in model.named_parameters() if "twiker_model" not in n],
             },
+            # twiker
             {
-                "params": [p for n, p in model.named_parameters() if "TwikerEmbedding" in n],
-                "learning_rate": twiker_args.twiker_lr,
+                "params": [p for n, p in model.named_parameters() if "twiker_model" in n],
+                "lr": twiker_args.twiker_lr,
             },
         ]
-        optimizer = torch.optim.AdamW(optimizer_grouped_parameters,
-                                      lr=training_args.learning_rate)
-        schedule = get_linear_schedule_with_warmup(optimizer, **training_args)
+        optimizer = torch.optim.AdamW(grouped_parameters, lr=training_args.learning_rate,
+                                      weight_decay=training_args.weight_decay)
+
+        # scheduler, using trainer default: get_linear_schedule_with_warmup
+        schedule = None
+        if train_dataset is not None:
+            num_update_steps_per_epoch = math.ceil(len(train_dataset) / training_args.per_device_train_batch_size)
+            num_training_steps = training_args.num_train_epochs * num_update_steps_per_epoch
+            schedule = get_linear_schedule_with_warmup(optimizer,
+                                                       num_warmup_steps=training_args.warmup_steps,
+                                                       num_training_steps=int(num_training_steps))
         optimizers_tuple = (optimizer, schedule)
     trainer = Trainer(
         model=model,
