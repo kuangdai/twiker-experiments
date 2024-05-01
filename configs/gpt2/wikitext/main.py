@@ -48,6 +48,7 @@ from transformers import (
     default_data_collator,
     is_torch_xla_available,
     set_seed,
+    get_linear_schedule_with_warmup
 )
 from transformers.testing_utils import CaptureLogger
 from transformers.trainer_utils import get_last_checkpoint
@@ -300,6 +301,14 @@ class TwikerArguments:
         metadata={
             "help": (
                 "How TWIKER handles casual masking."
+            )
+        },
+    )
+    twiker_lr: float = field(
+        default=None,
+        metadata={
+            "help": (
+                "learning rate for TWIKER."
             )
         },
     )
@@ -673,6 +682,23 @@ def main():
             return metric.compute(predictions=preds, references=labels)
 
     # Initialize our Trainer
+    optimizers_tuple = (None, None)
+    if twiker_args.twiker_activated and twiker_args.twiker_lr is not None:
+        # different lr for twiker and base
+        optimizer_grouped_parameters = [
+            {
+                "params": [p for n, p in model.named_parameters() if not "TwikerEmbedding" in n],
+                "learning_rate": training_args.learning_rate,
+            },
+            {
+                "params": [p for n, p in model.named_parameters() if "TwikerEmbedding" in n],
+                "learning_rate": twiker_args.twiker_lr,
+            },
+        ]
+        optimizer = torch.optim.AdamW(optimizer_grouped_parameters,
+                                      lr=training_args.learning_rate)
+        schedule = get_linear_schedule_with_warmup(optimizer, **training_args)
+        optimizers_tuple = (optimizer, schedule)
     trainer = Trainer(
         model=model,
         args=training_args,
@@ -685,6 +711,7 @@ def main():
         preprocess_logits_for_metrics=preprocess_logits_for_metrics
         if training_args.do_eval and not is_torch_xla_available()
         else None,
+        optimizers=optimizers_tuple
     )
 
     # Training
