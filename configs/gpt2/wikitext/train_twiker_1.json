@@ -22,10 +22,10 @@
 
 
     "twiker_activated": true,
-    "twiker_kernel_size": 3,
+    "twiker_kernel_size": 5,
     "twiker_sum_to_one": false,
     "twiker_head_invariant": true,
     "twiker_layer_invariant": true,
     "twiker_casual_handling": "shrink_near_boundary",
-    "twiker_lr": 5e-4
+    "twiker_lr": 5e-3
 }
