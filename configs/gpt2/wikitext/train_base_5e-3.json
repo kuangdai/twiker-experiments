@@ -22,7 +22,7 @@
 
 
     "twiker_activated": false,
-    "twiker_kernel_size": 3,
+    "twiker_kernel_size": 5,
     "twiker_sum_to_one": false,
     "twiker_head_invariant": true,
     "twiker_layer_invariant": true,
