@@ -280,6 +280,14 @@ class TwikerArguments:
             )
         },
     )
+    twiker_to_be_convolved: str = field(
+        default="kv",
+        metadata={
+            "help": (
+                "Whether to consider TWIKER for key or value or both."
+            )
+        },
+    )
     twiker_head_invariant: bool = field(
         default=False,
         metadata={
@@ -486,6 +494,7 @@ def main():
         "twiker_activated": twiker_args.twiker_activated,
         "twiker_kernel_size": twiker_args.twiker_kernel_size,
         "twiker_sum_to_one": twiker_args.twiker_sum_to_one,
+        "twiker_to_be_convolved": twiker_args.twiker_to_be_convolved,
         "twiker_head_invariant": twiker_args.twiker_head_invariant,
         "twiker_layer_invariant": twiker_args.twiker_layer_invariant,
         "twiker_casual_handling": twiker_args.twiker_casual_handling
