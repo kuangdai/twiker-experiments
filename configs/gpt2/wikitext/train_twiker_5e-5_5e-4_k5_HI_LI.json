@@ -24,6 +24,7 @@
     "twiker_activated": true,
     "twiker_kernel_size": 5,
     "twiker_sum_to_one": false,
+    "twiker_to_be_convolved": "kv",
     "twiker_head_invariant": true,
     "twiker_layer_invariant": true,
     "twiker_casual_handling": "shrink_near_boundary",
