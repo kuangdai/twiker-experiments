@@ -312,6 +312,14 @@ class TwikerArguments:
             )
         },
     )
+    twiker_temperature: float = field(
+        default=1.0,
+        metadata={
+            "help": (
+                "Temperature for softmax."
+            )
+        },
+    )
     twiker_lr: float = field(
         default=None,
         metadata={
@@ -497,7 +505,8 @@ def main():
         "twiker_to_be_convolved": twiker_args.twiker_to_be_convolved,
         "twiker_head_invariant": twiker_args.twiker_head_invariant,
         "twiker_layer_invariant": twiker_args.twiker_layer_invariant,
-        "twiker_casual_handling": twiker_args.twiker_casual_handling
+        "twiker_casual_handling": twiker_args.twiker_casual_handling,
+        "twiker_temperature": twiker_args.twiker_temperature
     }
     if model_args.config_name:
         config = AutoConfig.from_pretrained(model_args.config_name, **config_kwargs)

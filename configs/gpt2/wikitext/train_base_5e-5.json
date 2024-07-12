@@ -28,5 +28,6 @@
     "twiker_head_invariant": true,
     "twiker_layer_invariant": true,
     "twiker_casual_handling": "shrink_near_boundary",
+    "twiker_temperature": 1.0,
     "twiker_lr": 5e-4
 }
