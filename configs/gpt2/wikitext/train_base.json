@@ -6,7 +6,7 @@
 
     "output_dir": "auto",
     "overwrite_output_dir": true,
-    "report_to": "wandb",
+    "report_to": "none",
     "save_strategy": "no",
     "logging_steps": 50,
 
@@ -22,12 +22,13 @@
 
 
     "twiker_activated": false,
-    "twiker_kernel_size": 5,
-    "twiker_sum_to_one": false,
-    "twiker_to_be_convolved": "kv",
+    "twiker_kernel_size": 3,
+    "twiker_to_be_convolved": "v",
+    "twiker_softmax": true,
+    "twiker_temperature": 1.0,
     "twiker_head_invariant": true,
     "twiker_layer_invariant": true,
     "twiker_casual_handling": "shrink_near_boundary",
-    "twiker_temperature": 1.0,
+    "twiker_only_first_layer": true,
     "twiker_lr": 5e-4
 }

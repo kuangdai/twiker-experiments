@@ -272,19 +272,27 @@ class TwikerArguments:
             )
         },
     )
-    twiker_sum_to_one: bool = field(
-        default=True,
-        metadata={
-            "help": (
-                "Whether to make TWIKER sum to one."
-            )
-        },
-    )
     twiker_to_be_convolved: str = field(
-        default="kv",
+        default="v",
         metadata={
             "help": (
                 "Whether to consider TWIKER for key or value or both."
+            )
+        },
+    )
+    twiker_softmax: bool = field(
+        default=True,
+        metadata={
+            "help": (
+                "Whether to enforce TWIKER as a distribution."
+            )
+        },
+    )
+    twiker_temperature: float = field(
+        default=1.0,
+        metadata={
+            "help": (
+                "Temperature for softmax."
             )
         },
     )
@@ -304,19 +312,19 @@ class TwikerArguments:
             )
         },
     )
-    twiker_casual_handling: bool = field(
-        default=False,
+    twiker_casual_handling: str = field(
+        default="shrink_near_boundary",
         metadata={
             "help": (
                 "How TWIKER handles casual masking."
             )
         },
     )
-    twiker_temperature: float = field(
-        default=1.0,
+    twiker_only_first_layer: bool = field(
+        default=True,
         metadata={
             "help": (
-                "Temperature for softmax."
+                "Whether to consider TWIKER only in the first layer."
             )
         },
     )
@@ -501,12 +509,13 @@ def main():
         # set up TWIKER
         "twiker_activated": twiker_args.twiker_activated,
         "twiker_kernel_size": twiker_args.twiker_kernel_size,
-        "twiker_sum_to_one": twiker_args.twiker_sum_to_one,
         "twiker_to_be_convolved": twiker_args.twiker_to_be_convolved,
+        "twiker_softmax": twiker_args.twiker_softmax,
+        "twiker_temperature": twiker_args.twiker_temperature,
         "twiker_head_invariant": twiker_args.twiker_head_invariant,
         "twiker_layer_invariant": twiker_args.twiker_layer_invariant,
         "twiker_casual_handling": twiker_args.twiker_casual_handling,
-        "twiker_temperature": twiker_args.twiker_temperature
+        "twiker_only_first_layer": twiker_args.twiker_only_first_layer,
     }
     if model_args.config_name:
         config = AutoConfig.from_pretrained(model_args.config_name, **config_kwargs)
