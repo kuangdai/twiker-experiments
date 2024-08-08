@@ -155,5 +155,3 @@ cython_debug/
 results/
 dev/
 wandb/
-data_processing/potter/books/*.txt
-data_processing/potter/data_files/*.txt
