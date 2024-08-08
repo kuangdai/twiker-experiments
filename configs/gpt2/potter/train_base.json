@@ -25,10 +25,10 @@
     "twiker_kernel_size": 3,
     "twiker_to_be_convolved": "v",
     "twiker_softmax": true,
-    "twiker_temperature": 1.0,
+    "twiker_temperature": 0.4,
     "twiker_head_invariant": true,
     "twiker_layer_invariant": true,
     "twiker_casual_handling": "shrink_near_boundary",
     "twiker_only_first_layer": true,
-    "twiker_lr": 5e-4
+    "twiker_lr": 5e-3
 }
