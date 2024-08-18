@@ -155,3 +155,4 @@ cython_debug/
 results/
 dev/
 wandb/
+process_analysis/*/books
