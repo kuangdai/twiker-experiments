@@ -1,7 +1,7 @@
 {
     "model_name_or_path": "openai-community/gpt2",
-    "train_file": "/home/ubuntu/Downloads/twiker-experiments/process_analysis/potter/data_files/train.txt",
-    "validation_file": "/home/ubuntu/Downloads/twiker-experiments/process_analysis/potter/data_files/eval.txt",
+    "train_file": "../../../data_processing/potter/data_files/train.txt",
+    "validation_file": "../../../data_processing/potter/data_files/eval.txt",
 
 
     "output_dir": "auto",
@@ -21,7 +21,7 @@
     "learning_rate": 5e-5,
 
 
-    "twiker_activated": true,
+    "twiker_activated": false,
     "twiker_kernel_size": 3,
     "twiker_to_be_convolved": "v",
     "twiker_softmax": true,
