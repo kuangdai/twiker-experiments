@@ -2,7 +2,7 @@
     "model_name_or_path": "meta-llama/Meta-Llama-3-8B",
     "dataset_name": "wikitext",
     "dataset_config_name": "wikitext-2-raw-v1",
-    "token": "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",
+    "token": "",
 
     "output_dir": "auto",
     "overwrite_output_dir": true,
