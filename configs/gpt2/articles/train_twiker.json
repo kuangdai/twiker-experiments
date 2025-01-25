@@ -1,7 +1,7 @@
 {
-    "model_name_or_path": "openai-community/gpt2",
-    "train_file": "/home/ubuntu/Downloads/twiker-experiments/process_analysis/articles/data_files/train.txt",
-    "validation_file": "/home/ubuntu/Downloads/twiker-experiments/process_analysis/articles/data_files/eval.txt",
+    "model_name_or_path": "/Users/kuangdai/stfc/twiker/twiker-experiments/results/gpt2/articles/train_base",
+    "train_file": "/Users/kuangdai/stfc/twiker/twiker-experiments/data/datasets/articles/data_files/train_new.txt",
+    "validation_file": "/Users/kuangdai/stfc/twiker/twiker-experiments/data/datasets/articles/data_files/eval.txt",
 
 
     "output_dir": "auto",
