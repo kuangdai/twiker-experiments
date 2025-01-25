@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     # Tokenization
     tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
-    with open(f"./{args.name}/data_files/full.txt", 'r') as fs:
+    with open(f"./data/datasets/{args.name}/data_files/train_new.txt", 'r') as fs:
         book_text = fs.read()
     book_tokens = np.array(tokenizer.tokenize(book_text))
     book_ids = np.array(tokenizer.convert_tokens_to_ids(book_tokens))
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     print("Frequent Unique tokens in dataset", len(book_ids_unique))
 
     # Weights
-    w = torch.load(f"weights/{args.name}.pt")
+    w = torch.load(f"./weights/{args.name}.pt")
     w = w[:, 3:]  # value
     w = torch.softmax(w / args.temperature, dim=-1)
     w = w[book_ids_unique]
