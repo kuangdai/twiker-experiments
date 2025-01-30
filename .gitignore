@@ -156,3 +156,4 @@ results/
 dev/
 wandb/
 configs/gpt2
+figs
