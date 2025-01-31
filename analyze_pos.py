@@ -89,7 +89,7 @@ def main():
 
     # Analyze sentence
     pos_dict = {}
-    for sent in tqdm.tqdm(sentences):
+    for sent in tqdm.tqdm(sentences, desc=args.name):
         tokens, token_ids, token_pos = analyze_sentence(sent)
         for token, token_id, pos in zip(tokens, token_ids, token_pos):
             if token_id not in pos_dict:
