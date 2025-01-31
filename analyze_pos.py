@@ -44,8 +44,6 @@ def analyze_sentence(sentence):
     token_ids_good = []
     token_pos = []
     word_index = 0
-    buffer = ""
-    count = 0
 
     for token, token_id in zip(tokens, token_ids):
         token = token.replace("Ġ", "")  # Remove GPT-2's word boundary marker
@@ -56,28 +54,19 @@ def analyze_sentence(sentence):
         word_index_use = word_index
         found = False
         while word_index_use < len(words):
-            if token in words[word_index_use]:
+            if token == words[word_index_use]:
                 found = True
                 break
             word_index_use += 1
         if not found:
             continue
-
-        print(token, words[word_index])
         word_index = word_index_use
-        buffer += token
-        count += 1
-        if buffer == words[word_index]:  # Match full word
-            token_pos.append(pos_tags[word_index].lower() if count == 1 else "sub_end")
-            tokens_good.append(token)
-            token_ids_good.append(token_id)
-            word_index += 1
-            buffer = ""
-            count = 0
-        else:
-            token_pos.append("sub_begin" if count == 1 else "sub_mid")
-            tokens_good.append(token)
-            token_ids_good.append(token_id)
+
+        # Save match
+        token_pos.append(pos_tags[word_index].lower())
+        tokens_good.append(token)
+        token_ids_good.append(token_id)
+        word_index += 1
     return tokens_good, token_ids_good, token_pos
 
 
@@ -115,9 +104,4 @@ def main():
 
 
 if __name__ == "__main__":
-    s = "It’s a change, because it was never obligatory before."
-    tokens, token_ids, token_pos = analyze_sentence(s)
-    print(tokens)
-    print(token_ids)
-    print(token_pos)
-    # main()
+    main()
