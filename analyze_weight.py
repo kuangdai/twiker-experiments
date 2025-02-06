@@ -50,25 +50,23 @@ def main():
     unique_poses.remove("part")
     pos_weight_dict = {}
     for p in unique_poses:
-        pos_weight_dict[p] = {}
-        pos_weight_dict[p]["w_sum"] = torch.zeros(args.kernel_size)
-        pos_weight_dict[p]["w_factor"] = 0.
+        pos_weight_dict[p] = []
 
     for token_id, token_dict in token_pos_dict.items():
         token_id = int(token_id)
         token_poses = token_dict["poses"]
         token_poses = ["prop" if x in {"part", "adp"} else x for x in token_poses]
         unique, count = np.unique(token_poses, return_counts=True)
-        for p, c in zip(unique, count):
-            if c >= args.count:
-                factor = c / len(token_poses)
-                pos_weight_dict[p]["w_sum"] += w_model[token_id] * factor
-                pos_weight_dict[p]["w_factor"] += factor
+        p = unique[np.argmax(count)]
+        pos_weight_dict[p].append(w_model[token_id])
 
     pos_dist_dict = {"all": dist_all.item()}
     for p in unique_poses:
-        w = pos_weight_dict[p]["w_sum"] / pos_weight_dict[p]["w_factor"]
-        pos_dist_dict[p] = (w - origin[None, :]).norm(dim=1).mean().item()
+        if len(pos_weight_dict[p]) == 0:
+            pos_dist_dict[p] = 0.
+        else:
+            w = torch.stack(pos_weight_dict[p], dim=0)
+            pos_dist_dict[p] = (w - origin[None, :]).norm(dim=1).mean().item()
     with open(f"results/distance/{args.name}.json", "w") as file:
         json.dump(pos_dist_dict, file)
 
