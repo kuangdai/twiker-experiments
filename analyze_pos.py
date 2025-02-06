@@ -99,7 +99,7 @@ def main():
             pos_dict[token_id]["poses"].append(pos)
 
     # Save
-    with open(f"pos/{args.name}.json", "w") as file:
+    with open(f"results/pos/{args.name}.json", "w") as file:
         json.dump(pos_dict, file)
 
 
