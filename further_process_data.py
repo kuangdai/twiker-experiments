@@ -19,7 +19,7 @@ def create_datasets_with_strict_token_limit(sentences, tokenizer, max_tokens=100
     lengths = []
 
     # Randomly select 2000 unique starting indices
-    start_sentence_ids = np.random.choice(len(sentences), max_data, replace=False)
+    start_sentence_ids = np.random.choice(len(sentences), max_data * 2, replace=False)
 
     for start_idx in start_sentence_ids:
         current_entry = []
@@ -37,8 +37,13 @@ def create_datasets_with_strict_token_limit(sentences, tokenizer, max_tokens=100
 
         # data
         data_sentence = " ".join(current_entry)
+        length = len(tokenizer.encode(data_sentence))
+        if length < max_tokens // 2:
+            continue
         datasets.append(data_sentence)
         lengths.append(len(tokenizer.encode(data_sentence)))
+        if len(datasets) == max_data:
+            break
     return datasets, np.array(lengths)
 
 
