@@ -19,7 +19,7 @@ def create_datasets_with_strict_token_limit(sentences, tokenizer, max_tokens=100
     lengths = []
 
     # Randomly select 2000 unique starting indices
-    start_sentence_ids = np.random.choice(len(sentences), max_data * 2, replace=False)
+    start_sentence_ids = np.random.choice(len(sentences), len(sentences), replace=False)
 
     for start_idx in start_sentence_ids:
         current_entry = []
@@ -56,6 +56,8 @@ if __name__ == "__main__":
 
     for ds_path in ds_paths:
         dataset_name = ds_path.name
+        if not "stone_" in dataset_name:
+            continue
         with open(ds_path / "data_files/full.txt", 'r') as fs:
             train_text = fs.read()
 
@@ -79,4 +81,20 @@ if __name__ == "__main__":
 
         # Save the dataset to train_new.txt, each entry on a new line
         with open(ds_path / "data_files/train_new.txt", "w") as output_file:
+            output_file.write("\n".join(dataset))
+
+        # Create datasets by aggregating sentences
+        dataset, lengths = create_datasets_with_strict_token_limit(
+            train_sentences, tokenizer, max_tokens=1000, max_data=200, seed=43
+        )
+        dataset_dict[dataset_name] = dataset
+
+        # Print summary
+        print(
+            f"{dataset_name}: size={len(dataset)}, "
+            f"max_token_length={lengths.max()}, min_token_length={lengths.min()}, ave_token_length={lengths.mean()}"
+        )
+
+        # Save the dataset to train_new.txt, each entry on a new line
+        with open(ds_path / "data_files/eval.txt", "w") as output_file:
             output_file.write("\n".join(dataset))
