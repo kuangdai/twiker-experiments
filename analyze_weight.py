@@ -46,7 +46,7 @@ def main():
     # Classes
     unique_poses = sorted(set(pos for v in token_pos_dict.values() for pos in v["poses"]))
     unique_poses.append("prop")
-    unique_poses.remove("cconj")
+    unique_poses.remove("adp")
     unique_poses.remove("part")
     pos_weight_dict = {}
     for p in unique_poses:
@@ -57,7 +57,7 @@ def main():
     for token_id, token_dict in token_pos_dict.items():
         token_id = int(token_id)
         token_poses = token_dict["poses"]
-        token_poses = ["prop" if x in {"part", "cconj"} else x for x in token_poses]
+        token_poses = ["prop" if x in {"part", "adp"} else x for x in token_poses]
         unique, count = np.unique(token_poses, return_counts=True)
         for p, c in zip(unique, count):
             if c >= args.count:
