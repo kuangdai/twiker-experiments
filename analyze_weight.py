@@ -29,6 +29,7 @@ def main():
     args = parser.parse_args()
 
     # Load poses
+    print(args.name)
     with open(f"results/pos/{args.name}.json", "r") as file:
         token_pos_dict = json.load(file)
     print("Total tokens in dataset:", len(token_pos_dict))
