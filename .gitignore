@@ -155,3 +155,4 @@ cython_debug/
 dev/
 wandb/
 configs/gpt2
+.DS_Store
