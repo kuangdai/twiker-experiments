@@ -1,0 +1,9 @@
+{
+    "twiker_activated": false,
+    "twiker_kernel_size": 3,
+    "twiker_to_be_convolved": "v",
+    "twiker_softmax": true,
+    "twiker_temperature": 0.4,
+    "twiker_head_invariant": true,
+    "twiker_causal_handling": "shrink_near_boundary"
+}
