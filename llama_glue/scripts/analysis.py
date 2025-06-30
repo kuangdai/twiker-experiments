@@ -67,11 +67,31 @@ for task in tasks:
         row.append(task if idx == 0 else "")
         row.append(short_name)
 
+        # 收集各配置指标
+        values = []
         for config in configs:
             val = task_metrics[task].get(metric, {}).get(config, "NA")
-            if isinstance(val, float):
-                val = f"{val:.3f}"
-            row.append(val)
+            values.append(val)
+
+        # 确定理想值
+        float_vals = [v for v in values if isinstance(v, float)]
+        if float_vals:
+            if short_name == "Loss":
+                best = min(float_vals)
+            else:
+                best = max(float_vals)
+        else:
+            best = None
+
+        # 填充每列
+        for v in values:
+            if isinstance(v, float):
+                formatted = f"{v:.3f}"
+                if v == best:
+                    formatted = r"\textbf{" + formatted + r"}"
+                row.append(formatted)
+            else:
+                row.append("NA")
 
         lines.append(" & ".join(row) + r" \\")
 
