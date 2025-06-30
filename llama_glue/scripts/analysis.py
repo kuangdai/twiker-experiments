@@ -2,7 +2,7 @@ import os
 
 # 结果路径
 result_root = "../results"
-tasks = ["wnli", "rte", "mrpc", "stsb", "cola", "sst2", "qnli", "qqp", "mnli"]
+tasks = ["rte", "mrpc", "stsb", "cola", "sst2", "qnli", "qqp", "mnli"]
 configs = ["twiker_off", "twiker_small", "twiker_large"]
 config_names = {"twiker_off": "Off", "twiker_small": "Small", "twiker_large": "Large"}
 
@@ -86,7 +86,7 @@ for task in tasks:
         # 填充每列
         for v in values:
             if isinstance(v, float):
-                formatted = f"{v:.3f}"
+                formatted = f"{v:.4f}"
                 if v == best:
                     formatted = r"\textbf{" + formatted + r"}"
                 row.append(formatted)
