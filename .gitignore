@@ -158,3 +158,5 @@ configs/gpt2
 .DS_Store
 weights/potter_head.pt
 weights/embed
+llama_glue/datasets
+llama_glue/models
