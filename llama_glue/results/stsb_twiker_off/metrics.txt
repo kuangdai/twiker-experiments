@@ -1,0 +1,7 @@
+eval_loss: 0.4182
+eval_pearson: 0.9042
+eval_spearmanr: 0.9069
+eval_runtime: 31.6895
+eval_samples_per_second: 47.3340
+eval_steps_per_second: 11.8340
+epoch: 3.0000

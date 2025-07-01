@@ -1,0 +1,7 @@
+eval_loss: 0.2977
+eval_accuracy: 0.9111
+eval_f1: 0.8913
+eval_runtime: 843.5526
+eval_samples_per_second: 47.9280
+eval_steps_per_second: 11.9830
+epoch: 3.0000

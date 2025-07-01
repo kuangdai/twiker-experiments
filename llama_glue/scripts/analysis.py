@@ -4,7 +4,7 @@ import os
 result_root = "../results"
 tasks = ["rte", "mrpc", "stsb", "cola", "sst2", "qnli", "qqp", "mnli"]
 configs = ["twiker_off", "twiker_small", "twiker_large"]
-config_names = {"twiker_off": "Off", "twiker_small": "Small", "twiker_large": "Large"}
+config_names = {"twiker_off": "OFF", "twiker_small": "SMALL", "twiker_large": "LARGE"}
 
 # 缩写规则
 metric_rename = {
