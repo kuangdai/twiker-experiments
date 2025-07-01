@@ -101,7 +101,8 @@ lines.append(r"\end{tabular}")
 lines.append(
     r"\caption{GLUE Benchmark with LLaMA-3-8B and \texttt{TWiKer}. "
     r"\textbf{Acc} = Accuracy, \textbf{MC} = Matthews Correlation, "
-    r"\textbf{PC} = Pearson Correlation, \textbf{SC} = Spearman Correlation.}"
+    r"\textbf{PC} = Pearson Correlation, \textbf{SC} = Spearman Correlation."
+    r"WNLI is excluded due to accuracy lower than random chance.}"
 )
 lines.append(r"\end{table}")
 
