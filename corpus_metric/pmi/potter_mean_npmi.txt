@@ -1,0 +1,9 @@
+Corpus: data/datasets/potter/data_files/train_new.txt
+Window: ±5
+Keep stopwords: False
+Min token length: 2
+Max tokens: None
+Min count (pruning): 5
+Vocabulary size (after pruning): 10047
+Total co-occurrence pairs (raw): 8294800
+Mean NPMI: 0.439739

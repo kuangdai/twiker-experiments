@@ -1,0 +1,9 @@
+Corpus: data/datasets/dikens/data_files/train_new.txt
+Window: ±5
+Keep stopwords: False
+Min token length: 2
+Max tokens: None
+Min count (pruning): 5
+Vocabulary size (after pruning): 12976
+Total co-occurrence pairs (raw): 8035190
+Mean NPMI: 0.426368

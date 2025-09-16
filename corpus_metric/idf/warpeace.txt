@@ -1,0 +1,6 @@
+Corpus: data/datasets/warpeace/data_files/train_new.txt
+Model:  corpus_metric/idf/wiki_20220301_en.json.gz
+Tokens kept: 868840
+Vocab size:  16926
+Avg External IDF (token-weighted): 4.4897
+Avg External IDF (type-weighted):  7.4932

@@ -1,0 +1,6 @@
+Corpus: data/datasets/potter/data_files/train_new.txt
+Model:  corpus_metric/idf/wiki_20220301_en.json.gz
+Tokens kept: 829490
+Vocab size:  19347
+Avg External IDF (token-weighted): 4.7595
+Avg External IDF (type-weighted):  7.9328

@@ -1,0 +1,8 @@
+
+Corpus: data/datasets/victorian/data_files/train_new.txt
+# Chunks: 391
+# Sentences processed: 66570
+# Sentences used: 62533
+Mean dependency depth: 5.775
+Median depth: 6.000
+Std dev: 2.084

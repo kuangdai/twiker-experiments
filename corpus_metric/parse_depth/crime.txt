@@ -1,0 +1,8 @@
+
+Corpus: data/datasets/crime/data_files/train_new.txt
+# Chunks: 392
+# Sentences processed: 108413
+# Sentences used: 102429
+Mean dependency depth: 4.730
+Median depth: 4.000
+Std dev: 2.051

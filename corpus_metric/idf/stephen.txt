@@ -1,0 +1,6 @@
+Corpus: data/datasets/stephen/data_files/train_new.txt
+Model:  corpus_metric/idf/wiki_20220301_en.json.gz
+Tokens kept: 838285
+Vocab size:  36371
+Avg External IDF (token-weighted): 4.4643
+Avg External IDF (type-weighted):  8.4113

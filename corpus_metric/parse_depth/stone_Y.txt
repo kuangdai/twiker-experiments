@@ -1,0 +1,8 @@
+
+Corpus: data/datasets/stone_Y/data_files/train_new.txt
+# Chunks: 426
+# Sentences processed: 118663
+# Sentences used: 113366
+Mean dependency depth: 4.967
+Median depth: 5.000
+Std dev: 1.916

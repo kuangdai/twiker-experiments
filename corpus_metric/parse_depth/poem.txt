@@ -1,0 +1,8 @@
+
+Corpus: data/datasets/poem/data_files/train_new.txt
+# Chunks: 460
+# Sentences processed: 82693
+# Sentences used: 80649
+Mean dependency depth: 5.778
+Median depth: 5.000
+Std dev: 3.231

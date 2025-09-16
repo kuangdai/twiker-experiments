@@ -1,0 +1,8 @@
+
+Corpus: data/datasets/shakes/data_files/train_new.txt
+# Chunks: 393
+# Sentences processed: 114510
+# Sentences used: 104770
+Mean dependency depth: 4.582
+Median depth: 4.000
+Std dev: 1.929

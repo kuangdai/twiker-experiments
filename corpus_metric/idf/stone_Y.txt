@@ -1,0 +1,6 @@
+Corpus: data/datasets/stone_Y/data_files/train_new.txt
+Model:  corpus_metric/idf/wiki_20220301_en.json.gz
+Tokens kept: 900074
+Vocab size:  15714
+Avg External IDF (token-weighted): 4.8494
+Avg External IDF (type-weighted):  7.5846

@@ -1,0 +1,6 @@
+Corpus: data/datasets/dikens/data_files/train_new.txt
+Model:  corpus_metric/idf/wiki_20220301_en.json.gz
+Tokens kept: 803529
+Vocab size:  29802
+Avg External IDF (token-weighted): 4.5520
+Avg External IDF (type-weighted):  8.3364

@@ -1,0 +1,6 @@
+Corpus: data/datasets/poem/data_files/train_new.txt
+Model:  corpus_metric/idf/wiki_20220301_en.json.gz
+Tokens kept: 967541
+Vocab size:  20574
+Avg External IDF (token-weighted): 4.4237
+Avg External IDF (type-weighted):  7.7741

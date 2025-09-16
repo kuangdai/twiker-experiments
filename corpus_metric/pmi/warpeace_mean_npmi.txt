@@ -1,0 +1,9 @@
+Corpus: data/datasets/warpeace/data_files/train_new.txt
+Window: ±5
+Keep stopwords: False
+Min token length: 2
+Max tokens: None
+Min count (pruning): 5
+Vocabulary size (after pruning): 11256
+Total co-occurrence pairs (raw): 8688300
+Mean NPMI: 0.471153

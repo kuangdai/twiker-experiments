@@ -1,0 +1,6 @@
+Corpus: data/datasets/victorian/data_files/train_new.txt
+Model:  corpus_metric/idf/wiki_20220301_en.json.gz
+Tokens kept: 873078
+Vocab size:  28234
+Avg External IDF (token-weighted): 5.1492
+Avg External IDF (type-weighted):  8.9557

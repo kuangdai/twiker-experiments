@@ -1,0 +1,8 @@
+
+Corpus: data/datasets/dikens/data_files/train_new.txt
+# Chunks: 411
+# Sentences processed: 75567
+# Sentences used: 71493
+Mean dependency depth: 5.768
+Median depth: 5.000
+Std dev: 2.591

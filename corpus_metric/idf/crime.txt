@@ -1,0 +1,6 @@
+Corpus: data/datasets/crime/data_files/train_new.txt
+Model:  corpus_metric/idf/wiki_20220301_en.json.gz
+Tokens kept: 740697
+Vocab size:  9288
+Avg External IDF (token-weighted): 4.6034
+Avg External IDF (type-weighted):  6.8025
